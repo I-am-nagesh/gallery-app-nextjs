@@ -2,9 +2,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import type { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
-// Fix for "sorry, too many clients already"
 declare global {
-  // eslint-disable-next-line no-var -- only var works here
   var db: PostgresJsDatabase | undefined;
 }
 
@@ -18,4 +16,4 @@ if (process.env.NODE_ENV === "production") {
   db = global.db;
 }
 
-export { db }
+export { db };

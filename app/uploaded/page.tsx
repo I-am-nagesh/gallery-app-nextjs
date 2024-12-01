@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 type Image = {
   id: number;
@@ -15,9 +15,9 @@ const UploadedPage = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch('/api/uploaded');
+        const response = await fetch("/api/uploaded");
         if (!response.ok) {
-          throw new Error('Failed to fetch images');
+          throw new Error("Failed to fetch images");
         }
         const data = await response.json();
         setImages(data);
@@ -38,15 +38,15 @@ const UploadedPage = () => {
           images.map((image) => (
             <div
               key={image.id}
-              className="border rounded-lg p-4 shadow-md text-center"
+              className="border rounded-lg p-4 shadow-md text-center transition-transform transform hover:scale-105 hover:shadow-xl"
             >
               <img
                 src={image.url}
-                alt={`Uploaded by ${image.uploaderName || 'Anonymous'}`}
-                className="rounded-lg max-h-40 mx-auto"
+                alt={`Uploaded by ${image.uploaderName || "Anonymous"}`}
+                className="rounded-lg max-h-40 mx-auto transition-transform duration-300 ease-in-out hover:scale-110"
               />
               <p className="mt-2 text-sm font-semibold">
-                {image.uploaderName || 'Anonymous'}
+                {image.uploaderName || "Anonymous"}
               </p>
             </div>
           ))
